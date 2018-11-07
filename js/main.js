@@ -2,7 +2,7 @@
 
 // initialize map
 var map = L.map("map", {
-    centr: [46.73, -92.107],
+    center: [46.73, -92.107],
     zoom: 11
 });
 
@@ -10,7 +10,7 @@ var map = L.map("map", {
 var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(mop);
+}).addTo(map);
 
 // create request for GeoJSON
 var request = new Promise(function(resolve, reject){
@@ -80,7 +80,7 @@ request.then(function(values){
 		// Leaflet documentation explains:
 		// "If a Function is passed it will receive the layer as the first
 		// argument and should return a String or HTMLElement."
-		.bindPoopup(function (layer){
+		precinctsLayer.bindPopup(function (layer){
 			// create variables to be displayed in popup
 			var demVote = layer.feature.properties.USPRSDFL;
 		    var repVote = layer.feature.properties.USPRSR;
